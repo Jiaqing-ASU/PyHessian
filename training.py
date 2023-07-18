@@ -81,14 +81,25 @@ parser.add_argument('--weight-decay',
                     metavar='W',
                     help='weight decay (default: 1e-4)')
 parser.add_argument('--batch-norm',
-                    action='store_false',
+                    type = bool,
+                    default=True,
+                    # action='store_false',
                     help='do we need batch norm or not')
 parser.add_argument('--residual',
-                    action='store_false',
+                    type = bool,
+                    default=True,
+                    # action='store_false',
                     help='do we need residula connect or not')
 
+parser.add_argument('--depth',
+                    type=int,
+                    default=20,
+                    help='depth of the network')
+
 parser.add_argument('--cuda',
-                    action='store_false',
+                    type = bool,
+                    default=True,
+                    # action='store_false',
                     help='do we use gpu or not')
 parser.add_argument('--saving-folder',
                     type=str,
@@ -112,7 +123,7 @@ train_loader, test_loader = getData(name='cifar10',
 
 # get model and optimizer
 model = resnet(num_classes=10,
-               depth=20,
+               depth=args.depth,
                residual_not=args.residual,
                batch_norm_not=args.batch_norm)
 if args.cuda:
@@ -161,4 +172,4 @@ for epoch in range(1, args.epochs + 1):
     acc = test(model, test_loader)
     lr_scheduler.step()
 
-torch.save(model.state_dict(), args.saving_folder + 'net.pkl')
+torch.save(model.state_dict(), args.saving_folder + 'resnet' + str(args.depth) + '_batch_norm' + str(args.batch_norm) + '_residual' + str(args.residual) + '_net.pkl')
