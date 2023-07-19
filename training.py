@@ -82,13 +82,13 @@ parser.add_argument('--weight-decay',
                     help='weight decay (default: 1e-4)')
 parser.add_argument('--batch-norm',
                     type = bool,
-                    default=False,
-                    # action='store_false',
+                    default=True,
+                    action=argparse.BooleanOptionalAction,
                     help='do we need batch norm or not')
 parser.add_argument('--residual',
                     type = bool,
                     default=True,
-                    # action='store_false',
+                    action=argparse.BooleanOptionalAction,
                     help='do we need residula connect or not')
 
 parser.add_argument('--depth',
@@ -99,7 +99,7 @@ parser.add_argument('--depth',
 parser.add_argument('--cuda',
                     type = bool,
                     default=True,
-                    # action='store_false',
+                    action=argparse.BooleanOptionalAction,
                     help='do we use gpu or not')
 parser.add_argument('--saving-folder',
                     type=str,

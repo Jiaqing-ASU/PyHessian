@@ -133,7 +133,7 @@ class ResNet(nn.Module):
     def __init__(self,
                  depth,
                  residual_not=True,
-                 batch_norm_not=False,
+                 batch_norm_not=True,
                  base_channel=16,
                  num_classes=10):
         super(ResNet, self).__init__()
