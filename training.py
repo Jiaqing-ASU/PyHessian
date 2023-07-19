@@ -82,7 +82,7 @@ parser.add_argument('--weight-decay',
                     help='weight decay (default: 1e-4)')
 parser.add_argument('--batch-norm',
                     type = bool,
-                    default=True,
+                    default=False,
                     # action='store_false',
                     help='do we need batch norm or not')
 parser.add_argument('--residual',
