@@ -172,4 +172,4 @@ for epoch in range(1, args.epochs + 1):
     acc = test(model, test_loader)
     lr_scheduler.step()
 
-torch.save(model.state_dict(), args.saving_folder + 'resnet' + str(args.depth) + '_batch_norm' + str(args.batch_norm) + '_residual' + str(args.residual) + '_seed' + str(args.seed) + '_net.pkl')
+torch.save(model.state_dict(), args.saving_folder + 'resnet' + str(args.depth) + '_batch_norm_' + str(args.batch_norm) + '_residual_' + str(args.residual) + '_seed_' + str(args.seed) + '_net.pkl')
